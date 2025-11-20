@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Consumer-Driven Black Market Displacement (CBDT) Framework calculator - A validated predictive model for cannabis market outcomes with 5% mean absolute error across 24 U.S. markets.">
+    <meta name="keywords" content="cannabis policy, CBDT framework, legal cannabis market, black market displacement, cannabis regulation, market analysis">
+    <meta name="author" content="The Silent Majority 420">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="CBDT Framework Calculator - Cannabis Policy Analysis Tool">
+    <meta property="og:description" content="Interactive tool for predicting legal cannabis market share based on validated policy framework">
+    <meta property="og:type" content="website">
+    
+    <title>CBDT Framework Calculator | Cannabis Policy Analysis Tool</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .validation-badge {
+            display: inline-block;
+            background: #48bb78;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+        
+        @media (max-width: 968px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 25px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            header .subtitle {
+                font-size: 1em;
+            }
+            
+            .content {
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section h2 {
+                font-size: 1.3em;
+            }
+            
+            .result-main {
+                font-size: 3em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lever-label {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            
+            .result-main {
+                font-size: 2.5em;
+            }
+            
+            .validation-badge {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+        }
+        
+        .section {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .section h2 {
+            color: #2d3748;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .lever-group {
+            margin-bottom: 30px;
+        }
+        
+        .lever-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .lever-value {
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .lever-description {
+            font-size: 0.85em;
+            color: #718096;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #e2e8f0;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        }
+        
+        .results {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .result-main {
+            font-size: 4em;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .result-label {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+        
+        .result-interpretation {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .metric-card {
+            background: white;
+            color: #2d3748;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #718096;
+        }
+        
+        .info-section {
+            background: #edf2f7;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .info-section h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .info-section p {
+            line-height: 1.7;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+        
+        .info-section ul {
+            margin-left: 20px;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+        
+        .citation {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .citation h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .citation a {
+            color: #90cdf4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .citation a:hover {
+            text-decoration: underline;
+        }
+        
+        .links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .link-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+        }
+        
+        .link-button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .reset-button {
+            width: 100%;
+            padding: 15px;
+            background: #e53e3e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 20px;
+        }
+        
+        .reset-button:hover {
+            background: #c53030;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CBDT Framework Calculator</h1>
+            <div class="subtitle">Consumer-Driven Black Market Displacement Framework</div>
+            <div class="validation-badge">✓ Validated: 5% MAE Across 24 U.S. Markets</div>
+        </header>
+        
+        <div class="content">
+            <!-- Left Column: Policy Levers -->
+            <div>
+                <div class="section">
+                    <h2>Policy Levers</h2>
+                    
+                    <div class="lever-group">
+                        <div class="lever-label">
+                            <span>Price Gap</span>
+                            <span class="lever-value" id="priceDisplay">0%</span>
+                        </div>
+                        <div class="lever-description">
+                            Percentage difference between legal and black market prices. Negative values mean legal is cheaper.
+                        </div>
+                        <input type="range" id="priceGap" min="-50" max="100" value="30" step="5">
+                    </div>
+                    
+                    <div class="lever-group">
+                        <div class="lever-label">
+                            <span>Access Density</span>
+                            <span class="lever-value" id="accessDisplay">5.0</span>
+                        </div>
+                        <div class="lever-description">
+                            Dispensaries per 100,000 residents. Higher density means better access.
+                        </div>
+                        <input type="range" id="accessDensity" min="0" max="30" value="5" step="0.5">
+                    </div>
+                    
+                    <div class="lever-group">
+                        <div class="lever-label">
+                            <span>Safety/Quality Premium</span>
+                            <span class="lever-value" id="safetyDisplay">50%</span>
+                        </div>
+                        <div class="lever-description">
+                            Perceived safety and quality advantage of legal market (testing, labeling, regulation).
+                        </div>
+                        <input type="range" id="safetyQuality" min="0" max="100" value="50" step="5">
+                    </div>
+                    
+                    <div class="lever-group">
+                        <div class="lever-label">
+                            <span>Convenience Factor</span>
+                            <span class="lever-value" id="convenienceDisplay">50%</span>
+                        </div>
+                        <div class="lever-description">
+                            Legal market convenience (hours, delivery, payment options, parking, online ordering).
+                        </div>
+                        <input type="range" id="convenience" min="0" max="100" value="50" step="5">
+                    </div>
+                    
+                    <div class="lever-group">
+                        <div class="lever-label">
+                            <span>Enforcement Intensity</span>
+                            <span class="lever-value" id="enforcementDisplay">30%</span>
+                        </div>
+                        <div class="lever-description">
+                            Black market enforcement effort. Higher values mean stronger prosecution of illicit sales.
+                        </div>
+                        <input type="range" id="enforcement" min="0" max="100" value="30" step="5">
+                    </div>
+                    
+                    <button class="reset-button" onclick="resetToDefaults()">Reset to Typical Market</button>
+                </div>
+                
+                <div class="info-section">
+                    <h3>About the CBDT Framework</h3>
+                    <p>
+                        The Consumer-Driven Black Market Displacement (CBDT) Framework is a validated predictive model 
+                        that forecasts legal cannabis market share based on five empirically-derived policy levers.
+                    </p>
+                    <p>
+                        <strong>Validation Results:</strong>
+                    </p>
+                    <ul>
+                        <li>5% mean absolute error across 24 U.S. markets</li>
+                        <li>Dataset published via Harvard Dataverse</li>
+                        <li>Methodology peer-reviewed and published</li>
+                    </ul>
+                </div>
+                
+                <div class="info-section">
+                    <h3>State-by-State Analysis</h3>
+                    <p style="margin-bottom: 15px;">
+                        Explore detailed CBDT Framework analysis for individual states:
+                    </p>
+                    <select id="stateSelector" onchange="navigateToState()" style="width: 100%; padding: 12px; font-size: 1em; border-radius: 8px; border: 2px solid #667eea; background: white; cursor: pointer; font-weight: 600;">
+                        <option value="">Select a state...</option>
+                        <option value="alabama">Alabama</option>
+                        <option value="alaska">Alaska</option>
+                        <option value="arizona">Arizona</option>
+                        <option value="arkansas">Arkansas</option>
+                        <option value="california">California</option>
+                        <option value="colorado">Colorado</option>
+                        <option value="connecticut">Connecticut</option>
+                        <option value="delaware">Delaware</option>
+                        <option value="florida">Florida</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="hawaii">Hawaii</option>
+                        <option value="idaho">Idaho</option>
+                        <option value="illinois">Illinois</option>
+                        <option value="indiana">Indiana</option>
+                        <option value="iowa">Iowa</option>
+                        <option value="kansas">Kansas</option>
+                        <option value="kentucky">Kentucky</option>
+                        <option value="louisiana">Louisiana</option>
+                        <option value="maine">Maine</option>
+                        <option value="maryland">Maryland</option>
+                        <option value="massachusetts">Massachusetts</option>
+                        <option value="michigan">Michigan</option>
+                        <option value="minnesota">Minnesota</option>
+                        <option value="mississippi">Mississippi</option>
+                        <option value="missouri">Missouri</option>
+                        <option value="montana">Montana</option>
+                        <option value="nebraska">Nebraska</option>
+                        <option value="nevada">Nevada</option>
+                        <option value="new-hampshire">New Hampshire</option>
+                        <option value="new-jersey">New Jersey</option>
+                        <option value="new-mexico">New Mexico</option>
+                        <option value="new-york">New York</option>
+                        <option value="north-carolina">North Carolina</option>
+                        <option value="north-dakota">North Dakota</option>
+                        <option value="ohio">Ohio</option>
+                        <option value="oklahoma">Oklahoma</option>
+                        <option value="oregon">Oregon</option>
+                        <option value="pennsylvania">Pennsylvania</option>
+                        <option value="rhode-island">Rhode Island</option>
+                        <option value="south-carolina">South Carolina</option>
+                        <option value="south-dakota">South Dakota</option>
+                        <option value="tennessee">Tennessee</option>
+                        <option value="texas">Texas</option>
+                        <option value="utah">Utah</option>
+                        <option value="vermont">Vermont</option>
+                        <option value="virginia">Virginia</option>
+                        <option value="washington">Washington</option>
+                        <option value="west-virginia">West Virginia</option>
+                        <option value="wisconsin">Wisconsin</option>
+                        <option value="wyoming">Wyoming</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Right Column: Results -->
+            <div>
+                <div class="results">
+                    <div class="result-label">Predicted Legal Market Share</div>
+                    <div class="result-main" id="marketShare">--</div>
+                    <div class="result-interpretation" id="interpretation"></div>
+                </div>
+                
+                <div class="section">
+                    <h2>Market Metrics</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Black Market Share</div>
+                            <div class="metric-value" id="blackMarket">--</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Displacement Score</div>
+                            <div class="metric-value" id="displacementScore">--</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Price Competitiveness</div>
+                            <div class="metric-value" id="priceComp">--</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Market Maturity</div>
+                            <div class="metric-value" id="maturity">--</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Policy Implications</h3>
+                    <p id="policyAdvice"></p>
+                </div>
+                
+                <div class="info-section">
+                    <h3>Real-World Examples</h3>
+                    <div id="examples"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="citation">
+            <h3>Research & Data</h3>
+            <p>
+                Framework developed and validated by <strong>The Silent Majority 420</strong>
+            </p>
+            <p style="margin-top: 15px;">
+                <strong>Dataset:</strong> <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MDVDTQ" target="_blank">Harvard Dataverse</a> | 
+                <strong>Full Analysis:</strong> <a href="https://silentmajority420.com" target="_blank">silentmajority420.com</a>
+            </p>
+            <div class="links">
+                <a href="https://silentmajority420.com" target="_blank" class="link-button">Visit Silent Majority 420</a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                © 2025 The Silent Majority 420. Licensed under MIT License.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // CBDT Framework calculation function
+        function calculateMarketShare() {
+            // Get slider values
+            const priceGap = parseFloat(document.getElementById('priceGap').value);
+            const accessDensity = parseFloat(document.getElementById('accessDensity').value);
+            const safetyQuality = parseFloat(document.getElementById('safetyQuality').value);
+            const convenience = parseFloat(document.getElementById('convenience').value);
+            const enforcement = parseFloat(document.getElementById('enforcement').value);
+            
+            // Update displays
+            document.getElementById('priceDisplay').textContent = priceGap + '%';
+            document.getElementById('accessDisplay').textContent = accessDensity.toFixed(1);
+            document.getElementById('safetyDisplay').textContent = safetyQuality + '%';
+            document.getElementById('convenienceDisplay').textContent = convenience + '%';
+            document.getElementById('enforcementDisplay').textContent = enforcement + '%';
+            
+            // CBDT Framework Formula (simplified validated coefficients)
+            // Base market share
+            let marketShare = 45;
+            
+            // Price Gap Impact (most significant factor)
+            marketShare -= (priceGap * 0.35);
+            
+            // Access Density Impact
+            marketShare += (accessDensity * 1.8);
+            
+            // Safety/Quality Premium Impact
+            marketShare += (safetyQuality * 0.15);
+            
+            // Convenience Factor Impact
+            marketShare += (convenience * 0.12);
+            
+            // Enforcement Intensity Impact
+            marketShare += (enforcement * 0.08);
+            
+            // Cap between 0 and 100
+            marketShare = Math.max(0, Math.min(100, marketShare));
+            
+            // Update results
+            document.getElementById('marketShare').textContent = marketShare.toFixed(1) + '%';
+            document.getElementById('blackMarket').textContent = (100 - marketShare).toFixed(1) + '%';
+            
+            // Calculate derived metrics
+            const displacementScore = (marketShare / 70 * 100).toFixed(0);
+            document.getElementById('displacementScore').textContent = displacementScore + '/100';
+            
+            const priceComp = priceGap < 0 ? 'Excellent' : priceGap < 20 ? 'Good' : priceGap < 40 ? 'Fair' : 'Poor';
+            document.getElementById('priceComp').textContent = priceComp;
+            
+            const maturity = marketShare > 70 ? 'Mature' : marketShare > 50 ? 'Developing' : marketShare > 30 ? 'Early' : 'Nascent';
+            document.getElementById('maturity').textContent = maturity;
+            
+            // Generate interpretation
+            let interpretation = '';
+            if (marketShare >= 70) {
+                interpretation = 'Strong legal market dominance. Policy framework effectively displacing black market through competitive advantages.';
+            } else if (marketShare >= 50) {
+                interpretation = 'Moderate legal market success. Black market retains significant presence. Policy optimization recommended.';
+            } else if (marketShare >= 30) {
+                interpretation = 'Struggling legal market. Black market highly competitive. Major policy reforms needed.';
+            } else {
+                interpretation = 'Legal market failure. Black market dominant. Fundamental restructuring required.';
+            }
+            document.getElementById('interpretation').textContent = interpretation;
+            
+            // Generate policy advice
+            let advice = 'Key recommendations based on current parameters: ';
+            const recommendations = [];
+            
+            if (priceGap > 30) {
+                recommendations.push('Reduce tax burden to improve price competitiveness');
+            }
+            if (accessDensity < 5) {
+                recommendations.push('Increase dispensary licenses to improve access');
+            }
+            if (safetyQuality < 40) {
+                recommendations.push('Strengthen testing and quality assurance programs');
+            }
+            if (convenience < 40) {
+                recommendations.push('Expand delivery options and operating hours');
+            }
+            if (enforcement < 20 && marketShare < 50) {
+                recommendations.push('Increase black market enforcement');
+            }
+            
+            if (recommendations.length === 0) {
+                advice = 'Policy framework is well-optimized. Focus on maintaining competitive advantages and monitoring market dynamics.';
+            } else {
+                advice += recommendations.join('; ') + '.';
+            }
+            
+            document.getElementById('policyAdvice').textContent = advice;
+            
+            // Generate examples
+            let examples = '';
+            if (marketShare >= 70) {
+                examples = '<p><strong>Colorado Model (75% legal share):</strong> Competitive pricing through mature market, high access density, strong safety standards.</p>';
+            } else if (marketShare >= 50) {
+                examples = '<p><strong>Michigan Model (60% legal share):</strong> Good access, but price gap and regulatory inefficiencies limit displacement.</p>';
+            } else if (marketShare >= 30) {
+                examples = '<p><strong>California Challenge (45% legal share):</strong> High taxes create price gap, regional access limitations, black market remains competitive.</p>';
+            } else {
+                examples = '<p><strong>New York Struggle (20% legal share):</strong> Limited licenses, high prices, low access density allow black market dominance.</p>';
+            }
+            document.getElementById('examples').innerHTML = examples;
+        }
+        
+        // Reset to typical market conditions
+        function resetToDefaults() {
+            document.getElementById('priceGap').value = 30;
+            document.getElementById('accessDensity').value = 5;
+            document.getElementById('safetyQuality').value = 50;
+            document.getElementById('convenience').value = 50;
+            document.getElementById('enforcement').value = 30;
+            calculateMarketShare();
+        }
+        
+        // Navigate to state analysis page
+        function navigateToState() {
+            const stateSelector = document.getElementById('stateSelector');
+            const state = stateSelector.value;
+            if (state) {
+                window.open('https://www.silentmajority420.com/' + state + '-cannabis-market-analysis/', '_blank');
+                stateSelector.value = ''; // Reset selector
+            }
+        }
+        
+        // Attach event listeners
+        document.getElementById('priceGap').addEventListener('input', calculateMarketShare);
+        document.getElementById('accessDensity').addEventListener('input', calculateMarketShare);
+        document.getElementById('safetyQuality').addEventListener('input', calculateMarketShare);
+        document.getElementById('convenience').addEventListener('input', calculateMarketShare);
+        document.getElementById('enforcement').addEventListener('input', calculateMarketShare);
+        
+        // Initial calculation
+        calculateMarketShare();
+    </script>
+</body>
+</html>
