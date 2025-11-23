@@ -661,7 +661,7 @@
                         <div class="checkbox-text">
                             <div class="checkbox-title">✓ Eliminate IRS 280E Tax Code</div>
                             <div class="checkbox-desc">
-                                Allows ordinary business expense deductions, reducing effective tax rates from 60-75% to 21%. Enables 30-40% consumer price reductions while maintaining operator margins.
+                                Allows ordinary business expense deductions, reducing effective tax rates from 60-75% to 21%. Enables 20-30% consumer price reductions while maintaining operator margins.
                             </div>
                         </div>
                     </label>
@@ -728,7 +728,7 @@
                         </p>
                         <p style="margin-top: 15px;">
                             <strong>Federal Reform Adjustments:</strong><br>
-                            • 280E elimination: -$0.15/g price reduction<br>
+                            • 280E elimination: -$0.12/g price reduction (20-30% savings)<br>
                             • SAFE Banking: +0.15 convenience boost
                         </p>
                         <p style="margin-top: 20px;">
@@ -829,7 +829,7 @@
         // Market Share = 1 / (1 + e^(−ΔU))
         
         // Federal reform impacts (validated estimates)
-        const REFORM_280E_PRICE_REDUCTION = -0.15; // $0.15/g price reduction when 280E eliminated
+        const REFORM_280E_PRICE_REDUCTION = -0.12; // $0.12/g price reduction when 280E eliminated (20-30% savings)
         const REFORM_SAFE_BANKING_CONVENIENCE = 0.15; // +0.15 convenience boost from banking access
         
         function calculate() {
@@ -888,7 +888,7 @@
                 // Update reform impact text
                 let reformText = 'Federal reforms improve market competitiveness:<br><br>';
                 if (has280ERemoval) {
-                    reformText += '• <strong>280E Elimination:</strong> Operators can deduct ordinary expenses, enabling 30-40% consumer price reductions. This improves legal price competitiveness significantly.<br>';
+                    reformText += '• <strong>280E Elimination:</strong> Operators can deduct ordinary expenses, enabling 20-30% consumer price reductions. This significantly improves legal price competitiveness.<br>';
                 }
                 if (hasSafeBanking) {
                     reformText += '• <strong>SAFE Banking:</strong> Banking access reduces cash-only costs and enables digital payments, improving convenience by 15-25%.<br>';
