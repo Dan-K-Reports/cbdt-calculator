@@ -1,11 +1,11 @@
-# robots.txt for calculator.silentmajority420.com
+# robots.txt for calculator.dankreports.com
 
 # Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://calculator.silentmajority420.com/sitemap.xml
+Sitemap: https://calculator.dankreports.com/sitemap.xml
 
 # Allow specific bots full access
 User-agent: Googlebot
