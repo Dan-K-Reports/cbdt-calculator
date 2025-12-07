@@ -9,7 +9,7 @@
 
 The CBDT Framework Calculator is an interactive web-based tool for predicting legal cannabis market outcomes based on empirically validated policy levers. This framework achieves **5% mean absolute error** across 24 U.S. cannabis markets.
 
-**Live Demo:** [https://[your-username].github.io/cbdt-calculator/](https://[your-username].github.io/cbdt-calculator/)
+**Live Demo:** [https://dankreports.github.io/cbdt-calculator/](https://dankreports.github.io/cbdt-calculator/)
 
 ## What is the CBDT Framework?
 
@@ -25,8 +25,8 @@ The **Consumer-Driven Black Market Displacement (CBDT) Framework** is a predicti
 
 - **Mean Absolute Error:** 5% across 24 U.S. markets
 - **Dataset:** Published via [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/MDVDTQ)
-- **Methodology:** Peer-reviewed research available at [silentmajority420.com](https://silentmajority420.com)
-- **Author:** The Silent Majority 420
+- **Methodology:** Peer-reviewed research available at [dankreports.com](https://www.dankreports.com)
+- **Author:** Daniel Kief
 
 ## Features
 
@@ -68,26 +68,23 @@ The **Consumer-Driven Black Market Displacement (CBDT) Framework** is a predicti
 ## Quick Start
 
 ### View Online
-Once deployed to GitHub Pages, visit: `https://[your-username].github.io/cbdt-calculator/cbdt-calculator.html`
+Visit: [https://dankreports.github.io/cbdt-calculator/](https://dankreports.github.io/cbdt-calculator/)
 
 ### Run Locally
 ```bash
 # Clone the repository
-git clone https://github.com/[your-username]/cbdt-calculator.git
+git clone https://github.com/DanKReports/cbdt-calculator.git
 
 # Open in browser
 cd cbdt-calculator
 open cbdt-calculator.html
 ```
 
-### Deploy to GitHub Pages
-1. Create a new repository on GitHub named `cbdt-calculator`
-2. Upload all files from this package
-3. Go to Settings → Pages
-4. Select `main` branch as source
-5. Access at `https://[your-username].github.io/cbdt-calculator/cbdt-calculator.html`
-
-**Note:** Update `[your-username]` placeholders in the HTML file before deploying.
+### Deploy to Your Own GitHub Pages
+1. Fork this repository
+2. Go to Settings → Pages
+3. Select `main` branch as source
+4. Access at `https://[your-username].github.io/cbdt-calculator/`
 
 ## How It Works
 
@@ -134,7 +131,7 @@ This calculator is based on comprehensive state-by-state cannabis policy analysi
 - **Validation:** Cross-validated predictions vs. actual outcomes
 - **Publication:** Harvard Dataverse + SSRN working paper
 
-**Full Research:** [silentmajority420.com](https://silentmajority420.com)
+**Full Research:** [dankreports.com](https://www.dankreports.com)
 
 ## Key Findings
 
@@ -176,7 +173,7 @@ Contributions welcome! Please:
 If you use this calculator or framework in research, please cite:
 
 ```
-The Silent Majority 420. (2025). Consumer-Driven Black Market Displacement (CBDT) 
+Kief, Daniel. (2025). Consumer-Driven Black Market Displacement (CBDT) 
 Framework: A Validated Predictive Model for Cannabis Market Outcomes. 
 Harvard Dataverse. https://doi.org/10.7910/DVN/MDVDTQ
 ```
@@ -187,9 +184,10 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## About the Author
 
-**The Silent Majority 420** is a cannabis policy analyst with 25 years of market experience. The CBDT Framework represents the synthesis of empirical research, statistical modeling, and real-world market observation.
+**Daniel Kief** is a cannabis policy analyst with 25 years of market experience. The CBDT Framework represents the synthesis of empirical research, statistical modeling, and real-world market observation.
 
-**Website:** [silentmajority420.com](https://silentmajority420.com)  
+**Website:** [dankreports.com](https://www.dankreports.com)  
+**Email:** [danielkreports@gmail.com](mailto:danielkreports@gmail.com)  
 **Research:** State-by-state cannabis policy analysis and federal reform advocacy
 
 ## Acknowledgments
@@ -198,15 +196,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - State regulatory agencies for public data
 - Cannabis industry participants for ground-truth validation
 
-## Related Resources
-
-- **Full State Analysis:** [silentmajority420.com/states](https://silentmajority420.com)
-- **Research Methodology:** [silentmajority420.com/methodology](https://silentmajority420.com)
-- **Federal Reform Analysis:** [silentmajority420.com/federal](https://silentmajority420.com)
-- **Investment Thesis:** [silentmajority420.com/investment](https://silentmajority420.com)
-
----
-
-**Questions?** Open an issue or visit [silentmajority420.com](https://silentmajority420.com)
-
-**Support this work:** Star ⭐ this repository to increase visibility of evidence-based cannabis policy analysis.
+- **Cannabis Consumption Research:** [Consumption Baseline Study](https://www.dankreports.com/cannabis-consumption-phantom-demand)
+- **Research Datasets:** [Harvard Dataverse](https://dataverse.harvard.edu/)
